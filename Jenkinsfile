@@ -21,8 +21,8 @@ pipeline{
         stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('sonar') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Disney Hotstar \
-                    -Dsonar.projectKey=Disney Hotstar '''
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Disney-Hotstar \
+                    -Dsonar.projectKey=Disney-Hotstar '''
                 }
             }
         }
