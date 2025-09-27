@@ -2,7 +2,7 @@ pipeline{
     agent any
     tools{
         jdk 'jdk'
-        nodejs 'node'
+        nodejs 'nodejs'
     }
     environment {
         SCANNER_HOME=tool 'sonar-scanner'
@@ -15,14 +15,14 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git branch: 'main', credentialsId: 'github-token', url: 'https://github.com/XEESHANAKRAM/hotstar-kubernetes.git'
+                git branch: 'main', url: 'https://github.com/XEESHANAKRAM/hotstar-kubernetes.git'
             }
         }
         stage("Sonarqube Analysis "){
             steps{
-                withSonarQubeEnv('SonarQube') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Disney-Hotstar \
-                    -Dsonar.projectKey=Disney-Hotstar '''
+                withSonarQubeEnv('sonar') {
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Disney Hotstar \
+                    -Dsonar.projectKey=Disney Hotstar '''
                 }
             }
         }
